@@ -1,0 +1,688 @@
+@charset "UTF-8";
+  @font-face {
+    font-family: 'GyeonggiTitle';
+    font-weight: 300;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleLight.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleLight.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleLight.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleLight.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleLight.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GyeonggiTitle-lighter';
+    font-weight: 500;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleMedium.ttf') format("truetype");
+    font-display: swap;
+}
+@font-face {
+    font-family: 'GyeonggiTitle-bold';
+    font-weight: 700;
+    font-style: normal;
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleBold.eot');
+    src: url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleBold.eot?#iefix') format('embedded-opentype'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleBold.woff2') format('woff2'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleBold.woff') format('woff'),
+        url('https://cdn.jsdelivr.net/gh/webfontworld/gyeonggi/GyeonggiTitleBold.ttf') format("truetype");
+    font-display: swap;
+}
+body{
+  font-family: 'GyeonggiTitleM','GyeonggiTitle-lighter','GyeonggiTitle-bold';
+}
+nav{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+    background: rgba(255, 255,255,0.8);
+  }
+
+  nav .top-main{
+    position: relative;
+    width: 96%;
+    max-width: 1400px;
+    height: 130px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+  }
+nav .top-main h2 img{
+    position: absolute;
+    top:  50px; left: 30px;
+    width: 12%;
+  }
+nav .top-main ul{
+    display: flex;
+    align-items: center;
+    margin: 0 40px;
+  }
+nav .top-main ul a{
+    padding: 0 50px;
+    color: #003487;
+  }
+nav .top-main li ul {
+    background: #fff;
+    font-size: 14px;
+    font-weight: 400;
+    text-align:center;
+    color: rgba(60,60,60,1);
+    display:none;
+    border: 2px solid #003487;
+    border-radius: 20px;
+    transition: all .5s;
+    position: absolute;
+    padding: 10px 10px;
+    top: 90px;
+    margin : 0 0 0 20px;
+  }
+nav .top-main li ul li{
+    margin: 20px 20px;
+  }
+nav .top-main li:hover ul{
+    display:block;
+  }
+.top-main li ul li:hover{
+    color: #416FBB;
+}
+nav .top-res {
+  width: 96%;
+ max-width: 160px;
+  display: flex;
+  align-items: center;
+  padding: 30px 0;
+}
+nav .top-res a{
+    font-size: 20px;
+    color: #003487;
+    display: block;
+    text-align: center;
+    width: 30px;
+   height: 30px;
+   line-height: 28px;
+   margin: 0 9px 0 0;
+   border: 2px solid #003487;
+   border-radius: 50%;
+  }
+  nav .top-res a:hover{
+    background: #003487;
+    color: #fff;
+  }
+   /*---------------------
+  HAMBURGER MENU
+  ----------------------*/
+  .hamburger-menu-warp{
+    display: none;
+    width: 96%;
+    max-width: 1600px;
+  }
+  .hamburger-menu {
+    position: fixed;
+    top: 0;
+    right: 0px;
+    padding-top: 20px;
+    padding-right: 15px;
+    /* width: 100%; */
+    height: 43px;
+    cursor: pointer;
+    z-index: 9998;
+    /* background:#EBEBEB; */
+    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  }
+  
+  .bar,
+  .bar:after,
+  .bar:before {
+    width: 30px;
+    height: 3px;
+  }
+  
+  .bar {
+    position: relative;
+    transform: translateY(10px);
+    background: #3858f7;
+    transition: all 0ms 300ms;
+  }
+  
+  .bar.animate {
+    background: rgba(255, 255, 255, 0);
+  }
+  
+  .bar:before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 10px;
+    background: #3858f7;
+    transition: bottom 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .bar:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 10px;
+    background: #3858f7;
+    transition: top 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .bar.animate:after {
+    top: 0;
+    transform: rotate(45deg);
+    transition: top 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+  .bar.animate:before {
+    bottom: 0;
+    transform: rotate(-45deg);
+    transition: bottom 300ms cubic-bezier(0.23, 1, 0.32, 1), transform 300ms 300ms cubic-bezier(0.23, 1, 0.32, 1);
+  }
+  
+      /*---------------------
+      Mobiles Menu - Design 
+      ----------------------*/
+  
+  .mobile-menu ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .mobile-menu li {
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+    overflow: hidden;
+    padding: 5px;
+    position: relative;
+    text-align: left;
+    text-transform: uppercase;
+    padding-left:15px;
+  }
+  
+  .mobile-menu li:first-child {
+    margin-top: 70px;
+  }
+  
+  .mobile-menu li:hover {
+    background: #A0BEF2;
+  }
+  
+  .mobile-menu li a {
+    text-decoration: none;
+    color: #fff;
+  }
+  
+      /*---------------------
+      Mobiles Menu - Slide IN 
+      ----------------------*/
+  
+  .mobile-menu {
+    top: 0;
+    max-width: 250px;
+    right: -100%;
+    width: 100%;
+    color: rgb(255, 255, 255);
+    background: #A0BEF2;
+    height: 100%;
+    position: fixed;
+    z-index: 9997;
+    overflow-y: auto;
+    -webkit-transform: translate3d(0, 0, 205px);
+    -moz-transform: translate3d(0, 0, 205px);
+    transform: translate3d(0, 0, 205px);
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+  }
+  
+  .mobile-menu.active {
+    right: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
+  }
+  
+      /*---------------------
+      Mobiles Menu - Dropdown Submenu
+      ----------------------*/
+  
+  .has-children:hover{
+      cursor:hand;
+  }
+  
+  .children {
+      display:none;	
+  }
+  
+  .mobile-menu .children li:first-child {
+    margin-top: 0px;
+  }
+  
+  .icon-arrow {
+      position: absolute;
+      display: block;
+      font-size: 0.7em;
+      color: rgb(255, 255, 255);
+      top: 5px;
+      right: 10px;
+    transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg); 
+      transition: .6s;
+    -webkit-transition: .6s;
+    -moz-transition: .6s;	 
+  }
+    
+  .icon-arrow:after {
+      content: "\25BC";
+  }
+  
+  .icon-arrow.open {
+    transform: rotate(-180deg);
+    -webkit-transform: rotate(-180deg);
+    -moz-transform: rotate(-180deg); 
+    transition: .6s;
+    -webkit-transition: .6s;
+    -moz-transition: .6s; 		
+  }
+  .main-visual{
+    width: 100%;
+    margin: 0 auto;
+  }
+  .main-visual img{
+    padding: 125px 0 0 0;
+    width: 100%;
+  }
+.main-menu{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  background-repeat: no-repeat;
+}
+.main-menu .menu-best{
+  width: 50%;
+}
+.main-menu .season-menu-wrap{
+  width: 50%;
+  /* 반반 나누기 위해서 100%에서 50%로만 준다 */
+  padding: 50px;
+  /* 안으로 넣기 위해  */
+}
+.main-menu .menu-best .menu-title{
+  background: #A0BEF2;
+}
+.main-menu .menu-best .menu-title h2{
+  color: #fff;
+  font-size: 80px;
+  text-align: center;
+  padding: 80px 0px;
+}
+.main-menu .menu-best .main-Bread{
+  background: #C1D4F5;
+  padding: 80px;
+}
+.menu-best .main-Bread .bread{
+  width: 96%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  position: relative;
+}
+.menu-best .main-Bread .bread li a img{
+  width: 80%;
+  transform: scale(1.0);
+  filter: drop-shadow(2px 2px 2px  #333);
+  transition: 0.3s all;
+}
+.menu-best .main-Bread .bread li a img:hover{
+  transform: scale(1.1);
+  transition: transfrom .5s;
+}
+.menu-best .main-Bread .bread li{
+  width: 27%;
+  display: flex;
+  flex-direction: column;
+}
+.menu-best .main-Bread .bread span{
+  color: #7B8EF2;
+  white-space: nowrap;
+  margin-top: 15px;
+}
+.menu-best .main-Bread .bread li:nth-of-type(2){
+  top: -100px;
+  position: relative;
+}
+.menu-best .main-Bread .bread li:nth-of-type(4){
+  bottom: -80px;
+  position: relative;
+}
+.menu-best .main-Bread .bread li:nth-of-type(5){
+  top: -50px;
+  position: relative;
+}
+.season-menu-wrap{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.season-menu-wrap .main-Bread2{
+  display: flex;
+  /* 정렬한다 */
+  align-items: flex-end;
+  /* 세로로 정렬로 flex-end로 글꼴 간격 맞춤 */
+}
+.season-menu-wrap .main-Bread2 > div{
+  width: 32%;
+  /* 세개  정렬을 해야되서 100%3해서 32%로 width적음 */
+  text-align: center;
+  /* 가운데 맞춤을 한 다  */
+}
+.season-menu-wrap .main-Bread2 > div img{
+  width: 50%;
+  /* 이미지에   width를 적어서 반응형에 대비를 한다 */
+}
+.season-menu-wrap .main-Bread2 .bread1  p{
+  font-size : 16px;
+  color: #7B8EF2;
+}
+.season-menu-wrap .main-Bread2 .bread2  p{
+  font-size : 16px;
+  color: #7B8EF2;
+}
+.season-menu-wrap .main-Bread2 .bread3  p{
+  font-size : 16px;
+  color: #7B8EF2;
+}
+.season-menu-wrap .season-menu .menu-title h3{
+  font-size : 30px;
+  color: #7B8EF2;
+}
+.season-menu-wrap .season-menu .menu-title p{
+  font-size: 16px;
+  color: #7B8EF2;
+  padding: 10px 0  30px 0;
+  /* 글자 간격  맟 옆 간격 주기 */
+}
+.season-menu-wrap .main-dwrap{
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+.season-menu-wrap  > div{
+  width: 100%;
+}
+.season-menu-wrap .main-dwrap > div{
+  width: 24%;
+  /* 4개  정렬을 해야되서 100%4해서 24%로 width적음  */
+  text-align: center;
+}
+.season-menu-wrap .main-dwrap img{
+  width: 100%;
+}
+.main-drink .drink-title h2{
+  font-size: 19px;
+  color: #7B8EF2;
+  padding-bottom: 10px;
+  position: relative;
+  white-space: nowrap;
+  margin: 0  0 30px 0;
+}
+.main-drink .drink-title h2::after{
+  content: '';
+  position: absolute;
+  width: 40%;
+  height: 1px;
+  border: 1px solid #7B8EF2;
+  bottom: -1px; left: 0px;
+}
+.main-dwrap .main-drink1 p{
+  font-size: 16px;
+    color: #7B8EF2;
+}
+.main-sns-banner{
+  width: 96%;
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  padding: 130px 0 0 0;
+  flex-direction: column;
+  align-items: center;
+}
+.main-sns-banner .sns-title h2{
+  color: #063583;
+  font-size: 50px;
+  line-height: 60px;
+  text-align: center;
+  padding: 30px 0;
+}
+.sns-text-warp{
+  width: 96%;
+  max-width: 1400px;
+  margin: 0 auto;
+  position: relative;
+}
+.sns{
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    right: -100px;
+}
+.sns a i{
+  text-align: right;
+  font-size: 60px;
+  color: #151a44;
+}
+.sns a i:hover{
+  color:#df83bf;
+
+}
+.sns-text1 a h3{
+  font-size: 30px;
+  font-weight: 300;
+  text-align: left;
+  padding: 0 0 30px 0;
+}
+.sns-text1 a img{
+  width: 100%;
+}
+.sns-text2{
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.sns-text2 .text{
+  width:  50%;
+  padding: 0 40px 0 0;
+}
+.sns-text2 h5{
+  font-size: 60px;
+  text-align: right;
+}
+.sns-text2 .text a{
+  display: block;
+  font-size: 30px;
+  text-align: right;
+}
+.banner-img{
+  width: 50%;
+}
+.sns-text2 .banner-img img{
+  width: 100%;
+}
+
+#slider {
+  width: 96%;
+  margin: 0 auto;
+  padding: 110px 0 100px 0;
+  overflow:hidden;
+  position:relative;
+  max-width:1400px;
+}
+#slider h2{
+  font-size: 50px;
+  color: #063583;
+  text-align: center;
+  padding: 10px 0 80px 0;
+}
+.image-box {
+  width: 4000px;
+  height:100%;
+  display:flex;
+  flex-wrap:nowrap;
+  animation: bannermove 10s linear infinite;
+}
+@keyframes bannermove {
+ 0% {
+     transform: translate(0, 0);
+ }
+ 100% {
+     transform: translate(-50%, 0);
+ }
+}
+.foot .footer-content{
+  width: 100%;
+  background: #6481B0;
+}
+.foot .footer-content a{
+  display: block;
+  text-align: center;
+}
+.foot .footer-content .icon {
+  text-align: center;
+  font-size: 30px;
+  color: #fff;
+
+}
+.foot .footer-content .icon i:hover{
+  color: darkblue;
+  cursor: pointer;
+}
+.foot .footer-content .address{
+  font-size: 9px;
+  line-height: 25px;
+  text-align: center;
+  color: #fff;
+  padding: 20px 0;
+
+}
+@media all and (max-width :1380px){
+
+}
+@media all and (max-width :1600px){
+}
+@media all and (max-width :1568px){
+
+}
+@media all and (max-width :1560px){
+
+}
+@media all and (max-width :1400px){
+
+}
+@media all and (max-width :1096px){
+  nav .top-main ul{
+    display: none;
+  }
+  nav .top-res{
+    display: none;
+  }
+  .hamburger-menu-warp{
+    display: block;
+  }
+  nav .top-main h2 img{
+    width: 30%;
+  }
+}
+@media all and (max-width :1132px){
+  .main-menu{
+    flex-direction: column;
+  }
+  .main-visual img{
+    width: 100%;
+  }
+  .main-menu .menu-best{
+    width: 100%;
+  }
+  .menu-best .main-Bread .bread{
+    align-items: right;
+  }
+  .main-menu .season-menu-wrap{
+    width: 100%;
+    align-items: center;
+  }
+.main-menu .season-menu-wrap .season-menu{
+  margin-bottom: 60px;
+  }
+    .main-drink .main-drink1
+  .main-drink .drink-title h2::after{
+    width: 400px;
+  }
+}
+@media all and (max-width : 948px){
+  .sns-text2 h5{
+    font-size: 40px;
+  }
+  .sns-text2 .text a{
+    font-size: 20px;
+  }
+}
+@media all and (max-width :1094px){
+  .main-visual img{
+    padding: 59px 0 0 ;
+  }
+  nav .top-main{
+    height: 60px;
+    top: -40px;
+  }
+}
+@media all and (max-width :1024px){
+
+}
+@media all and (max-width:786px){
+ .sns{
+  display: none;
+ }
+ .sns-text1 a h3{
+  font-size: 20px;
+ }
+ .sns-text2 h5{
+  font-size: 35px;
+ }
+}
+@media all and (max-width: 628px){
+  .sns-text2 .text a{
+    font-size: 19px;
+  }
+}
+@media all and (max-width: 823px){
+
+}
+@media all and (max-width:580px){
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*  */
